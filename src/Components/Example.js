@@ -1,27 +1,20 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-//Actions
-import { getData } from "../redux/Data/actions";
 
-const Example = ({ getData }) => {
-  const name = "aziz";
+//style
+import { Container } from "./style";
+
+const Example = () => {
+  const message = "Hello world!";
 
   useEffect(() => {
-    getData();
+    console.log("hello world");
   }, []);
 
-  return <h1>{name}</h1>;
+  return (
+    <Container>
+      <h1>{message}</h1>
+    </Container>
+  );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    ...state.getExampleReducer,
-    ...ownProps
-  };
-};
-
-const mapDispatchToProps = {
-  getData
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Example);
+export default Example;
