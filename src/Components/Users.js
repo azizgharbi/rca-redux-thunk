@@ -8,7 +8,7 @@ import { getData } from "../redux/Data/actions";
 import { Container } from "./style";
 
 const Users = ({ getData }) => {
-  const name = "Displaying users";
+  const message = "Displaying users";
 
   useEffect(() => {
     getData();
@@ -16,7 +16,7 @@ const Users = ({ getData }) => {
 
   return (
     <Container>
-      <h1>{name}</h1>
+      <h1>{message}</h1>
     </Container>
   );
 };
