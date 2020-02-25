@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Boilarplate
 
-- React (react create app / redux / redux-thunk)
+- React (react create app / redux / redux-thunk / react-router)
 
 ## Screenshots
 
