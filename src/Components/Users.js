@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 //Actions
@@ -8,15 +8,28 @@ import { getData } from "../redux/Data/actions";
 import { Container } from "./style";
 
 const Users = ({ getData }) => {
-  const message = "Displaying users";
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getData();
+    getData().then(({ payload }) => {
+      console.log(payload);
+      setUsers(payload);
+      setLoading(true);
+    });
   }, []);
 
   return (
     <Container>
-      <h1>{message}</h1>
+      {loading ? (
+        <ul>
+          {users.map(({ name }) => (
+            <li>{name}</li>
+          ))}
+        </ul>
+      ) : (
+        <span>...</span>
+      )}
     </Container>
   );
 };
@@ -24,12 +37,12 @@ const Users = ({ getData }) => {
 const mapStateToProps = (state, ownProps) => {
   return {
     ...state.getExampleReducer,
-    ...ownProps
+    ...ownProps,
   };
 };
 
 const mapDispatchToProps = {
-  getData
+  getData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);
